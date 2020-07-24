@@ -63,7 +63,7 @@ class RedisCache(BaseCache):
         t = type(value)
         if t in integer_types:
             return str(value).encode('ascii')
-        return b'!' + pickle.dumps(value)
+        return b'!' + pickle.dumps(value, protocol=2)
 
     def load_object(self, value):
         """The reversal of :meth:`dump_object`.  This might be called with
